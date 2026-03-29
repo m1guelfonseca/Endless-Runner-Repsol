@@ -307,7 +307,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 300
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
@@ -479,7 +479,7 @@ MonoBehaviour:
     FieldOfView: 60.000004
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 1000
+    FarClipPlane: 300
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -604,63 +604,6 @@ MonoBehaviour:
     Time: 0
     Smoothing: 0
     IgnoreY: 0
---- !u!1001 &461009715
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.17157
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6.61545
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 812133572846984355, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5905007857567144963, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
-      propertyPath: m_Name
-      value: Endless Section Base PF
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
 --- !u!1 &912087588
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,4 +829,3 @@ SceneRoots:
   - {fileID: 450281386}
   - {fileID: 25350591}
   - {fileID: 912087589}
-  - {fileID: 461009715}
