@@ -1,10 +1,16 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class CarHandler : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
 
     [SerializeField] Transform gameModel;
+
+    [SerializeField] MeshRenderer carMeshRenderer;
+
+    [SerializeField] ExplodeHandler explodeHandler;
 
     //max values 
     float maxSteerVelocity = 2;
@@ -15,16 +21,33 @@ public class CarHandler : MonoBehaviour
     float brakeMultiplier = 15;
     float steeringMultiplier = 5;
 
+    bool isExploded = false;
+
     Vector2 input = Vector2.zero;
+
 
     void Update()
     {
+        if (isExploded)
+        {
+            return;
+        }
+
         gameModel.transform.rotation = Quaternion.Euler(0, rb.linearVelocity.x * 5, 0);
     }
 
 
     private void FixedUpdate()
     {
+        if (isExploded)
+        {
+            rb.linearDamping = rb.linearVelocity.z * 0.1f;
+            rb.linearDamping = Mathf.Clamp(rb.linearDamping, 1.5f, 10);
+
+            rb.MovePosition(Vector3.Lerp(transform.position, new Vector3(0, 0, transform.position.z), Time.deltaTime * 0.5f));
+            return;
+        }
+
         if (input.y > 0)
         {
             accelerate();
@@ -55,7 +78,7 @@ public class CarHandler : MonoBehaviour
         //stay within the speed limit
         if (rb.linearVelocity.z >= maxForwardVelocity)
             return;
-        
+
         rb.AddForce(transform.forward * accelerationMultiplier * input.y);
     }
 
@@ -76,7 +99,7 @@ public class CarHandler : MonoBehaviour
             speedBaseSteerLimit = Mathf.Clamp01(speedBaseSteering);
 
             rb.AddForce(transform.right * steeringMultiplier * input.x * speedBaseSteering);
-        
+
             // normalize the x velocity
             float normalizedX = rb.linearVelocity.x / maxSteerVelocity;
 
@@ -85,7 +108,8 @@ public class CarHandler : MonoBehaviour
 
             // make sure we stay within the turn speed limit
             rb.linearVelocity = new Vector3(normalizedX * maxSteerVelocity, 0, rb.linearVelocity.z);
-        } else
+        }
+        else
         {
             // auto center car
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, new Vector3(0, 0, rb.linearVelocity.z), Time.fixedDeltaTime * 3);
@@ -96,5 +120,34 @@ public class CarHandler : MonoBehaviour
     {
         inputVector.Normalize();
         input = inputVector;
+    }
+
+    IEnumerator SlowDownTimeCO()
+    {
+        while (Time.timeScale > 0.2f)
+        {
+            Time.timeScale -= Time.deltaTime * 2;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        while (Time.timeScale <= 1f)
+        {
+            Time.timeScale += Time.deltaTime;
+            yield return null;
+        }
+
+        Time.timeScale = 1.0f;
+    }
+
+    //Events
+    private void OnCollisionEnter(Collision collision)
+    {
+        Vector3 velocity = rb.linearVelocity;
+        explodeHandler.Explode(velocity * 45);
+        isExploded = true;
+
+        StartCoroutine(SlowDownTimeCO()); ;
     }
 }
