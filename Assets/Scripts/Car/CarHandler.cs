@@ -22,9 +22,14 @@ public class CarHandler : MonoBehaviour
     float steeringMultiplier = 5;
 
     bool isExploded = false;
+    bool isPlayer = false;
 
     Vector2 input = Vector2.zero;
 
+    void Start()
+    {
+        isPlayer = CompareTag("Player");
+    }   
 
     void Update()
     {
@@ -122,6 +127,11 @@ public class CarHandler : MonoBehaviour
         input = inputVector;
     }
 
+    public void SetMaxSpeed(float newMaxSpeed)
+    {
+        maxForwardVelocity = newMaxSpeed;
+    }
+
     IEnumerator SlowDownTimeCO()
     {
         while (Time.timeScale > 0.2f)
@@ -144,6 +154,15 @@ public class CarHandler : MonoBehaviour
     //Events
     private void OnCollisionEnter(Collision collision)
     {
+        if(!isPlayer)
+        {
+            if(collision.transform.root.CompareTag("Untagged"))
+                return;
+
+            if(collision.transform.root.CompareTag("CarAI"))
+                return;
+        }
+
         Vector3 velocity = rb.linearVelocity;
         explodeHandler.Explode(velocity * 45);
         isExploded = true;

@@ -28,6 +28,9 @@ public class ExplodeHandler : MonoBehaviour
             rb.interpolation = RigidbodyInterpolation.Interpolate;
             rb.AddForce(Vector3.up * 200 + externalForce, ForceMode.Force);
             rb.AddTorque(Random.insideUnitSphere * 0.5f, ForceMode.Impulse);
+
+            //change the tag so other objects can explode after being hit by a carpart
+            rb.gameObject.tag = "CarPart";
         }
     }
 }
