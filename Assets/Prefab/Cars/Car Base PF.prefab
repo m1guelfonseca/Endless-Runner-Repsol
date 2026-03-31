@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537125829543140244}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 7532842077783938526}
   - component: {fileID: 2293753862523731069}
   - component: {fileID: 676982618793658189}
-  m_Layer: 0
+  - component: {fileID: 9079752120291705881}
+  m_Layer: 7
   m_Name: Car Base PF
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -138,6 +139,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExplodeHandler
   originalObject: {fileID: 2434642779425168660}
   model: {fileID: 6289845688569286676}
+--- !u!114 &9079752120291705881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703911715318028625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695bcb496f6ba5c4ba2fb70935125297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIHandler
+  carHandler: {fileID: 7532842077783938526}
+  otherCarsLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  meshCollider: {fileID: 8611277556447734146}
 --- !u!1001 &3245124338673147973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,6 +204,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8557964314158017068, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8111212044022256780, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8111212044022256780, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -194,6 +220,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 26081081df7e83b4b9e9791deb46dcaa, type: 2}
+    - target: {fileID: -6257368761631340415, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -5786282846334627946, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -5786282846334627946, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -210,13 +244,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: car_police
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286101627011792365, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1286101627011792365, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494594343287395940, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494594343287395940, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2499721959425190687, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4893056725213693179, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -227,8 +277,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 26081081df7e83b4b9e9791deb46dcaa, type: 2}
     - target: {fileID: 7362023724096292562, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362023724096292562, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091586775337793799, guid: 4cd56865a895aa644a63553e6ddc8bd3, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

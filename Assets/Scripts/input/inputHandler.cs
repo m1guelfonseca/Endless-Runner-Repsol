@@ -6,6 +6,15 @@ public class inputHandler : MonoBehaviour
 {
     [SerializeField] CarHandler carHandler;
 
+    private void Awake()
+    {
+        if (!CompareTag("Player"))
+        {
+            Destroy(this);
+            return;
+        }
+    }
+
     void Update()
     {
         Vector2 input = Vector2.zero;

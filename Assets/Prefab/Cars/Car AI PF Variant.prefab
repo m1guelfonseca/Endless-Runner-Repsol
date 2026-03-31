@@ -56,8 +56,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: CarAI
       objectReference: {fileID: 0}
+    - target: {fileID: 8611277556447734146, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079752120291705881, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+      propertyPath: meshCollider
+      value: 
+      objectReference: {fileID: 3009881044179667857}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+--- !u!64 &3009881044179667857 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 8611277556447734146, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+  m_PrefabInstance: {fileID: 6792652599852966419}
+  m_PrefabAsset: {fileID: 0}
