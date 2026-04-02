@@ -13,8 +13,13 @@ public class AIHandler : MonoBehaviour
     [SerializeField]
     MeshCollider meshCollider;
 
+    [Header("SFX")]
+
+    [SerializeField] AudioSource honkHornAS;
+
     RaycastHit[] raycastHits = new RaycastHit[1];
     bool isCarAhead = false;
+    float carAheadDistance = 0;
 
     //Lanes
     int drivingInLane = 0;
@@ -43,9 +48,16 @@ public class AIHandler : MonoBehaviour
         float accelerationInput = 1.0f;
         float steerInput = 0.0f;
 
-        if(isCarAhead)
+        if (isCarAhead)
+        {
             accelerationInput = -1;
 
+            if (carAheadDistance < 10 && !honkHornAS.isPlaying)
+            {
+                honkHornAS.pitch = Random.Range(0.5f, 1.1f);
+                honkHornAS.Play();
+            }
+        }
 
         float desiredPositionX = Utils.CarLanes[drivingInLane];
 
@@ -63,7 +75,7 @@ public class AIHandler : MonoBehaviour
     {
         while (true)
         {
-            isCarAhead = CheckIfOtherCarIsAhead();   
+            isCarAhead = CheckIfOtherCarIsAhead();
             yield return wait;
         }
     }
@@ -73,11 +85,14 @@ public class AIHandler : MonoBehaviour
         meshCollider.enabled = false;
 
         int numberOfHits = Physics.BoxCastNonAlloc(transform.position, Vector3.one * 0.25f, transform.forward, raycastHits, Quaternion.identity, 2, otherCarsLayerMask);
-   
+
         meshCollider.enabled = true;
 
-        if(numberOfHits > 0)
+        if (numberOfHits > 0)
+        {
+            carAheadDistance = (transform.position - raycastHits[0].point).magnitude;
             return true;
+        }
 
         return false;
     }
