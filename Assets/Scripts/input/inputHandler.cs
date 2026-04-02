@@ -37,6 +37,8 @@ public class inputHandler : MonoBehaviour
             // Restart
             if (Keyboard.current.rKey.wasPressedThisFrame)
             {
+                //Restore time scale 
+                Time.timeScale = 1.0f;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
