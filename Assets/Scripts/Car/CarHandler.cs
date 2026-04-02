@@ -37,6 +37,13 @@ public class CarHandler : MonoBehaviour
 
     Vector2 input = Vector2.zero;
 
+
+    //Stats
+
+    float carStartPositionZ;
+    float distanceTraveled = 0;
+    public float DistanceTraveled => distanceTraveled;
+
     void Start()
     {
         isPlayer = CompareTag("Player");
@@ -45,6 +52,7 @@ public class CarHandler : MonoBehaviour
         {
             carEngineAS.Play();
         }
+        carStartPositionZ = transform.position.z;
     }
 
     void Update()
@@ -58,6 +66,9 @@ public class CarHandler : MonoBehaviour
         gameModel.transform.rotation = Quaternion.Euler(0, rb.linearVelocity.x * 5, 0);
 
         UpdateCarAudio();
+
+        //Update distance traveled
+        distanceTraveled = transform.position.z - carStartPositionZ;
     }
 
 
