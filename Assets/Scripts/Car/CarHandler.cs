@@ -84,6 +84,13 @@ public class CarHandler : MonoBehaviour
         //Update distance traveled
         distanceTraveled = transform.position.z - carStartPositionZ;
 
+        // Notify the DifficultyManager to scale difficulty based on distance
+        if (isPlayer && DifficultyManager.Instance != null)
+        {
+            DifficultyManager.Instance.UpdateDifficulty(distanceTraveled);
+            maxForwardVelocity = DifficultyManager.Instance.PlayerMaxSpeed;
+        }
+
         // Gasuline consumption
         if (isPlayer && currentGasoline > 0)
         {

@@ -100,10 +100,12 @@ public class AIHandler : MonoBehaviour
     //Events
     private void OnEnable()
     {
-        // set a random speed
-        carHandler.SetMaxSpeed(Random.Range(2, 4));
+        // Pick a random speed within the current difficulty range
+        float speedMin = DifficultyManager.Instance != null ? DifficultyManager.Instance.AISpeedMin : 8f;
+        float speedMax = DifficultyManager.Instance != null ? DifficultyManager.Instance.AISpeedMax : 13f;
+        carHandler.SetMaxSpeed(Random.Range(speedMin, speedMax));
 
-        // set a random lane
+        // Pick a random lane
         drivingInLane = Random.Range(0, Utils.CarLanes.Length);
     }
 }

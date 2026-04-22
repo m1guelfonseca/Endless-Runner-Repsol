@@ -55,37 +55,38 @@ public class AICarSpawner : MonoBehaviour
         }
     }
 
-    void SpawnNewCars(){
-        if (Time.time - timeLastCarSpawned < 2)
+    void SpawnNewCars()
+    {
+        float spawnInterval = DifficultyManager.Instance != null ? DifficultyManager.Instance.SpawnInterval : 1.4f;
+        if (Time.time - timeLastCarSpawned < spawnInterval)
             return;
 
         GameObject carToSpawn = null;
 
         foreach (GameObject aiCar in carAIPool)
         {
-            //skip active cars
+            // Skip active cars
             if (aiCar.activeInHierarchy)
                 continue;
-            
+
             carToSpawn = aiCar;
             break;
         }
 
-        // no car available to spawn
+        // No car available in the pool
         if (carToSpawn == null)
             return;
 
-        Vector3 spawnPosition = new Vector3(0, 0.055f, playerCarTransform.position.z + 100);
+        float aheadDistance = DifficultyManager.Instance != null ? DifficultyManager.Instance.SpawnAheadDistance : 70f;
+        Vector3 spawnPosition = new Vector3(0, 0.055f, playerCarTransform.position.z + aheadDistance);
 
-        if(Physics.OverlapBoxNonAlloc(spawnPosition, Vector3.one * 2, overlappedCheckCollider, Quaternion.identity, otherCarsLayerMask) > 0)
+        if (Physics.OverlapBoxNonAlloc(spawnPosition, Vector3.one * 2, overlappedCheckCollider, Quaternion.identity, otherCarsLayerMask) > 0)
             return;
-        
 
         carToSpawn.transform.position = spawnPosition;
         carToSpawn.SetActive(true);
 
         timeLastCarSpawned = Time.time;
-
     }
 
     void CleanUpCarsBeyoundView()
