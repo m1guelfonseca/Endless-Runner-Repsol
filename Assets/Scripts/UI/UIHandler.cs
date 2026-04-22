@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIHandler : MonoBehaviour
 {
-    [SerializeField]
-    TextMeshProUGUI distanceTraveledText;
-
+    [SerializeField] TextMeshProUGUI distanceTraveledText;
+    [SerializeField] TextMeshProUGUI gasolineText;
     [SerializeField] TextMeshProUGUI gameOverText;
-
     [SerializeField] CanvasGroup gameOverCanvasGroup;
 
     //Reference
@@ -23,12 +21,22 @@ public class UIHandler : MonoBehaviour
 
         playerCarHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<CarHandler>();
         playerCarHandler.OnPlayerCrashed += PlayerCarHandler_OnPlayerCrashed;
+        playerCarHandler.OnGasolineChanged += UpdateGasolineUI;
+        UpdateGasolineUI(playerCarHandler.CurrentGasoline);
     }
 
     // Update is called once per frame
     void Update()
     {
         distanceTraveledText.text = playerCarHandler.DistanceTraveled.ToString("000000");
+    }
+
+    void UpdateGasolineUI(float gasoline)
+    {
+        if (gasolineText != null)
+        {
+            gasolineText.text = $"Fuel: {gasoline:0}";
+        }
     }
 
     IEnumerator StartGameOverAnimationCO()
