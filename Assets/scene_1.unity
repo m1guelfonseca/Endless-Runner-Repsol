@@ -739,6 +739,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AICarSpawner
   carAIPrefabs:
   - {fileID: 3795852168651537218, guid: 3acc942a06e62944dafbc17bcdad2a59, type: 3}
+  - {fileID: 8840996150579113119, guid: 9dfabad49ec2db941bdb87c9d2a0432d, type: 3}
+  - {fileID: 1444939400074319817, guid: 3213fc69dd3b20d49aadd4ffae78db97, type: 3}
+  - {fileID: 4602658584946065099, guid: 70dcd3e5a54a4b246ad40e460b4b643e, type: 3}
+  - {fileID: 8029656911923744930, guid: e900a8d5e3c2c784ab46a6d2d2f2edbc, type: 3}
   otherCarsLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -1395,8 +1399,8 @@ Canvas:
   m_TargetDisplay: 0
 --- !u!4 &912087589 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
-  m_PrefabInstance: {fileID: 1242037498424081937}
+  m_CorrespondingSourceObject: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
+  m_PrefabInstance: {fileID: 3217983840737875414}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1647688523
 GameObject:
@@ -2022,7 +2026,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137962166}
   m_CullTransparentMesh: 1
---- !u!1001 &1242037498424081937
+--- !u!1001 &3217983840737875414
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2030,55 +2034,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 4602658584946065099, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
+      propertyPath: m_Name
+      value: Car Base PF
+      objectReference: {fileID: 0}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.055
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2386083088587758441, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+    - target: {fileID: 8370844353983937779, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7703911715318028625, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
-      propertyPath: m_Name
-      value: Car Base PF
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2088,5 +2092,5 @@ SceneRoots:
   - {fileID: 450281386}
   - {fileID: 25350591}
   - {fileID: 684330842}
-  - {fileID: 1242037498424081937}
+  - {fileID: 3217983840737875414}
   - {fileID: 121643676}
