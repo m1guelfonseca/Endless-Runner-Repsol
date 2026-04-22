@@ -743,7 +743,6 @@ MonoBehaviour:
   - {fileID: 8840996150579113119, guid: 9dfabad49ec2db941bdb87c9d2a0432d, type: 3}
   - {fileID: 1444939400074319817, guid: 3213fc69dd3b20d49aadd4ffae78db97, type: 3}
   - {fileID: 4602658584946065099, guid: 70dcd3e5a54a4b246ad40e460b4b643e, type: 3}
-  - {fileID: 8029656911923744930, guid: e900a8d5e3c2c784ab46a6d2d2f2edbc, type: 3}
   otherCarsLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -764,8 +763,8 @@ MonoBehaviour:
   - {fileID: 8840996150579113119, guid: 19892240842a7eb428d79cb931e5b5f2, type: 3}
   - {fileID: 1444939400074319817, guid: d04d8a1b7c7ad134591bc2acd0ff30ab, type: 3}
   - {fileID: 4602658584946065099, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
-  - {fileID: 8029656911923744930, guid: e38e9bda70cbb984b93a0f81ac3d1d47, type: 3}
   cinemachineCamera: {fileID: 450281385}
+  isMainMenu: 0
 --- !u!1 &423311947
 GameObject:
   m_ObjectHideFlags: 0
