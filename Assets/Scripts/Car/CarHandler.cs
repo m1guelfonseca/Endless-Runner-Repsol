@@ -10,6 +10,7 @@ public class CarHandler : MonoBehaviour
     [SerializeField] Transform gameModel;
 
     [SerializeField] MeshRenderer carMeshRenderer;
+    public MeshRenderer CarMeshRenderer => carMeshRenderer;
 
     [SerializeField] ExplodeHandler explodeHandler;
 
