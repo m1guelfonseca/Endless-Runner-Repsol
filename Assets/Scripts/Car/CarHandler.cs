@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 
 public class CarHandler : MonoBehaviour
@@ -9,6 +10,7 @@ public class CarHandler : MonoBehaviour
     [SerializeField] Transform gameModel;
 
     [SerializeField] MeshRenderer carMeshRenderer;
+    public MeshRenderer CarMeshRenderer => carMeshRenderer;
 
     [SerializeField] ExplodeHandler explodeHandler;
 
@@ -43,6 +45,9 @@ public class CarHandler : MonoBehaviour
     float carStartPositionZ;
     float distanceTraveled = 0;
     public float DistanceTraveled => distanceTraveled;
+
+    //Events
+    public event Action<CarHandler> OnPlayerCrashed;
 
     void Start()
     {
@@ -241,6 +246,9 @@ public class CarHandler : MonoBehaviour
         CarCrashAS.pitch = CarMaxSpeedPercentage;
         CarCrashAS.pitch = Mathf.Clamp(CarCrashAS.pitch, 0.3f, 1.0f);
         CarCrashAS.Play();
+
+        //trigger event
+        OnPlayerCrashed?.Invoke(this);
 
         StartCoroutine(SlowDownTimeCO()); ;
     }
