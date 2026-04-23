@@ -864,9 +864,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndlessLevelHandler
   levelPrefabs:
-  - {fileID: 5905007857567144963, guid: 77c2fd4294f5f273aad97d5d97853230, type: 3}
   - {fileID: 7539928876204509795, guid: 58f45e5a6c5c0354187c2da280eec2e9, type: 3}
   - {fileID: 7539928876204509795, guid: f9c9307bfb559774081e5a5b3a093c20, type: 3}
+  - {fileID: 7539928876204509795, guid: 28d8b7d18eb4e3a41aa6b61d9c0ef9bd, type: 3}
 --- !u!114 &372716473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,7 +1201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 74.81915}
+  m_AnchoredPosition: {x: 0, y: 216.04993}
   m_SizeDelta: {x: 400, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429942762
@@ -2006,7 +2006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 181.39554}
+  m_AnchoredPosition: {x: 0, y: 108.11859}
   m_SizeDelta: {x: 400, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &754104193
