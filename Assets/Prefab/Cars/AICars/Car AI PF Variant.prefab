@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7429745492590710194, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.245
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429745492590710194, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.171
+      objectReference: {fileID: 0}
     - target: {fileID: 7703911715318028625, guid: 94930ad013d63c74fba945eb525e26db, type: 3}
       propertyPath: m_Name
       value: Car AI PF Variant
