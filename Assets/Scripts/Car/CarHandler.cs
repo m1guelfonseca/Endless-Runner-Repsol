@@ -9,6 +9,8 @@ public class CarHandler : MonoBehaviour
     [SerializeField] float gasolineMax = 100f;
     [SerializeField] float currentGasoline = 100f;
     [SerializeField] float consumePerSecond = 5f;
+
+    [SerializeField] AudioSource noFuelAS;
     public float CurrentGasoline => currentGasoline;
     public float GasolineMax => gasolineMax;
 
@@ -44,6 +46,7 @@ public class CarHandler : MonoBehaviour
 
     bool isExploded = false;
     bool isPlayer = false;
+    bool isOutOfFuel = false;
 
     Vector2 input = Vector2.zero;
 
@@ -97,10 +100,13 @@ public class CarHandler : MonoBehaviour
             currentGasoline -= consumePerSecond * Time.deltaTime;
             currentGasoline = Mathf.Clamp(currentGasoline, 0, gasolineMax);
             OnGasolineChanged?.Invoke(currentGasoline);
-            if (currentGasoline <= 0)
+            if (currentGasoline <= 0 && !isOutOfFuel)
             {
                 // out of gasoline, trigger game over
+                isOutOfFuel = true;
                 input = Vector2.zero;
+                carEngineAS.Stop();
+                noFuelAS.Play();
                 OnPlayerCrashed?.Invoke(this);
             }
         }
