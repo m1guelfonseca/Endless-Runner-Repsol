@@ -9,6 +9,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI gasolineText;
     [SerializeField] TextMeshProUGUI gameOverText;
     [SerializeField] CanvasGroup gameOverCanvasGroup;
+    [SerializeField] string carSelectionSceneName = "Main menu";
 
     //Reference
     CarHandler playerCarHandler;
@@ -62,5 +63,11 @@ public class UIHandler : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void onCarSelectionClicked()
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(carSelectionSceneName);
     }
 }
