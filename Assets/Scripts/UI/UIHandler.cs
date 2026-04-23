@@ -11,10 +11,14 @@ public class UIHandler : MonoBehaviour
     [SerializeField] CanvasGroup gameOverCanvasGroup;
     [SerializeField] string carSelectionSceneName = "Main menu";
 
+    [Header("Tutorial")]
+    [SerializeField] CanvasGroup tutorialCanvasGroup;
+    [SerializeField] float tutorialDuration = 4f;
+    [SerializeField] float tutorialFadeOutSpeed = 2f;
+
     //Reference
     CarHandler playerCarHandler;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameOverCanvasGroup.interactable = false;
@@ -24,9 +28,16 @@ public class UIHandler : MonoBehaviour
         playerCarHandler.OnPlayerCrashed += PlayerCarHandler_OnPlayerCrashed;
         playerCarHandler.OnGasolineChanged += UpdateGasolineUI;
         UpdateGasolineUI(playerCarHandler.CurrentGasoline);
+
+        if (tutorialCanvasGroup != null)
+        {
+            tutorialCanvasGroup.alpha = 1f;
+            tutorialCanvasGroup.interactable = false;
+            tutorialCanvasGroup.blocksRaycasts = false;
+            StartCoroutine(TutorialSequenceCO());
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         distanceTraveledText.text = playerCarHandler.DistanceTraveled.ToString("000000");
@@ -35,9 +46,20 @@ public class UIHandler : MonoBehaviour
     void UpdateGasolineUI(float gasoline)
     {
         if (gasolineText != null)
+            gasolineText.text = $"FUEL: {gasoline:0}";
+    }
+
+    IEnumerator TutorialSequenceCO()
+    {
+        yield return new WaitForSeconds(tutorialDuration);
+
+        while (tutorialCanvasGroup.alpha > 0f)
         {
-            gasolineText.text = $"Fuel: {gasoline:0}";
+            tutorialCanvasGroup.alpha = Mathf.MoveTowards(tutorialCanvasGroup.alpha, 0f, Time.deltaTime * tutorialFadeOutSpeed);
+            yield return null;
         }
+
+        tutorialCanvasGroup.gameObject.SetActive(false);
     }
 
     IEnumerator StartGameOverAnimationCO()
