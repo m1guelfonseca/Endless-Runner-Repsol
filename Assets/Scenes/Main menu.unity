@@ -963,7 +963,7 @@ MonoBehaviour:
   - {fileID: 8840996150579113119, guid: 19892240842a7eb428d79cb931e5b5f2, type: 3}
   - {fileID: 1444939400074319817, guid: d04d8a1b7c7ad134591bc2acd0ff30ab, type: 3}
   - {fileID: 4602658584946065099, guid: 5037a80ee698d9140b0fdbf4aa39a101, type: 3}
-  cinemachineCamera: {fileID: 0}
+  cameraSwitcher: {fileID: 0}
   isMainMenu: 1
 --- !u!1 &423311947
 GameObject:
@@ -1060,7 +1060,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 527704122}
   - {fileID: 2027107554}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1239,17 +1238,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527704121}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 423311951}
+  m_Father: {fileID: 2027107554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 494.74414, y: 0}
+  m_SizeDelta: {x: 1454.0372, y: 658.9971}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &527704123
 MonoBehaviour:
@@ -1264,7 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.45, g: 0.45, b: 0.45, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1855,6 +1854,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 527704122}
   - {fileID: 2137962167}
   - {fileID: 345580159}
   - {fileID: 2100898528}
