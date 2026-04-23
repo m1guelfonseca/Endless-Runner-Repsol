@@ -50,7 +50,7 @@ public class AIHandler : MonoBehaviour
 
         if (isCarAhead)
         {
-            accelerationInput = -1;
+            accelerationInput = Mathf.Clamp(carAheadDistance / 10f - 1f, -1f, 1f);
 
             if (carAheadDistance < 10 && !honkHornAS.isPlaying)
             {
@@ -94,6 +94,7 @@ public class AIHandler : MonoBehaviour
             return true;
         }
 
+        carAheadDistance = 0f; 
         return false;
     }
 

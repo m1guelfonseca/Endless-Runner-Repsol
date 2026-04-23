@@ -97,7 +97,6 @@ public class CarHandler : MonoBehaviour
             currentGasoline -= consumePerSecond * Time.deltaTime;
             currentGasoline = Mathf.Clamp(currentGasoline, 0, gasolineMax);
             OnGasolineChanged?.Invoke(currentGasoline);
-            Debug.Log($"{gameObject.name} gasolina: {currentGasoline}");
             if (currentGasoline <= 0)
             {
                 // out of gasoline, trigger game over
