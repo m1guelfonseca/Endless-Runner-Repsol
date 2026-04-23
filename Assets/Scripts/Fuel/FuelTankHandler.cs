@@ -16,6 +16,10 @@ public class FuelTankHandler : MonoBehaviour
         if (carHandler == null)
             return;
 
+        // only the player can collect fuel
+        if (!carHandler.CompareTag("Player"))
+            return;
+
         carHandler.AddGasoline(gasolineAmount);
         gameObject.SetActive(false);
     }
