@@ -531,6 +531,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5aed43a60aa76d4895fbab41ddd606b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarHandler
+  gasolineMax: 100
+  currentGasoline: 100
+  consumePerSecond: 3
   rb: {fileID: 8632693648436361307}
   gameModel: {fileID: 537125829543140244}
   carMeshRenderer: {fileID: 6990054423674319869}
