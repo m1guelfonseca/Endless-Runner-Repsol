@@ -3,6 +3,7 @@ using UnityEngine;
 public class FuelTankHandler : MonoBehaviour
 {
     [SerializeField] float gasolineAmount = 30f;
+    [SerializeField] AudioSource collectFuelAS;
 
     void Update()
     {
@@ -20,7 +21,9 @@ public class FuelTankHandler : MonoBehaviour
         if (!carHandler.CompareTag("Player"))
             return;
 
+
         carHandler.AddGasoline(gasolineAmount);
+        AudioSource.PlayClipAtPoint(collectFuelAS.clip, transform.position);
         gameObject.SetActive(false);
     }
 }
