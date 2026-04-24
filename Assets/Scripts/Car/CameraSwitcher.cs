@@ -4,7 +4,7 @@ using Unity.Cinemachine;
 
 public class CameraSwitcher : MonoBehaviour
 {
-    [Header("Cameras")]
+    [Header("Cinemachine Cameras")]
     [SerializeField] CinemachineCamera thirdPersonCamera;
     [SerializeField] CinemachineCamera firstPersonCamera;
 
@@ -12,10 +12,15 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField] int activePriority = 10;
     [SerializeField] int inactivePriority = 0;
 
-    [Header("FPV Config")]
+    [Header("Rearview Mirror")]
+    [SerializeField] Camera rearviewCamera;
+
+    [Header("Car Point Names")]
     [SerializeField] string fpvPointName = "FPVPoint";
+    [SerializeField] string rearviewPointName = "RearviewPoint";
 
     bool isFirstPerson = false;
+    Transform rearviewTarget;
 
     void Start()
     {
@@ -25,24 +30,39 @@ public class CameraSwitcher : MonoBehaviour
     void Update()
     {
         if (Keyboard.current != null && Keyboard.current.vKey.wasPressedThisFrame)
-        {
             ToggleCamera();
-        }
     }
 
-    // assigns targets for both cameras
-    public void SetCarTarget(GameObject car)
+    void LateUpdate()
     {
-        thirdPersonCamera.Follow = car.transform;
-
-        Transform fpvPoint = car.transform.Find(fpvPointName);
-
-        if (fpvPoint == null)
+        if (rearviewTarget == null || rearviewCamera == null)
             return;
 
+        rearviewCamera.transform.position = rearviewTarget.position;
+        rearviewCamera.transform.rotation = rearviewTarget.rotation;
+    }
+
+    public void SetCarTarget(GameObject car)
+    {
+        // third-person camera
+        thirdPersonCamera.Follow = car.transform;
+
+        // first-person camera
+        Transform fpvPoint = car.transform.Find(fpvPointName);
+        if (fpvPoint == null)
+            return; 
+        
 
         firstPersonCamera.Follow = fpvPoint;
         firstPersonCamera.LookAt = fpvPoint;
+        
+
+        // rearview mirror, save the transformation and follow it in LateUpdate
+        Transform rearviewPoint = car.transform.Find(rearviewPointName);
+        if (rearviewPoint != null)
+        {
+            rearviewTarget = rearviewPoint;
+        }
     }
 
     void ToggleCamera()

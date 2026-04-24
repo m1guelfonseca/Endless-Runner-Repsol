@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class UIHandler : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI gasolineText;
     [SerializeField] TextMeshProUGUI gameOverText;
     [SerializeField] CanvasGroup gameOverCanvasGroup;
+    [SerializeField] RawImage rearViewCameraImage;
     [SerializeField] string carSelectionSceneName = "Main menu";
 
     [Header("Tutorial")]
@@ -16,13 +19,15 @@ public class UIHandler : MonoBehaviour
     [SerializeField] float tutorialDuration = 4f;
     [SerializeField] float tutorialFadeOutSpeed = 2f;
 
-    //Reference
     CarHandler playerCarHandler;
 
     void Start()
     {
         gameOverCanvasGroup.interactable = false;
         gameOverCanvasGroup.alpha = 0;
+
+    if (rearViewCameraImage != null)
+        rearViewCameraImage.gameObject.SetActive(false);// começa escondida
 
         playerCarHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<CarHandler>();
         playerCarHandler.OnPlayerCrashed += PlayerCarHandler_OnPlayerCrashed;
@@ -41,6 +46,15 @@ public class UIHandler : MonoBehaviour
     void Update()
     {
         distanceTraveledText.text = playerCarHandler.DistanceTraveled.ToString("000000");
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+            ToggleRearCamera();
+    }
+
+    void ToggleRearCamera()
+    {
+        if (rearViewCameraImage == null) return;
+        rearViewCameraImage.gameObject.SetActive(!rearViewCameraImage.gameObject.activeSelf);
     }
 
     void UpdateGasolineUI(float gasoline)
@@ -52,22 +66,18 @@ public class UIHandler : MonoBehaviour
     IEnumerator TutorialSequenceCO()
     {
         yield return new WaitForSeconds(tutorialDuration);
-
         while (tutorialCanvasGroup.alpha > 0f)
         {
             tutorialCanvasGroup.alpha = Mathf.MoveTowards(tutorialCanvasGroup.alpha, 0f, Time.deltaTime * tutorialFadeOutSpeed);
             yield return null;
         }
-
         tutorialCanvasGroup.gameObject.SetActive(false);
     }
 
     IEnumerator StartGameOverAnimationCO()
     {
         yield return new WaitForSecondsRealtime(3.0f);
-
         gameOverCanvasGroup.interactable = true;
-
         while (gameOverCanvasGroup.alpha < 0.8f)
         {
             gameOverCanvasGroup.alpha = Mathf.MoveTowards(gameOverCanvasGroup.alpha, 1.0f, Time.deltaTime * 2);
