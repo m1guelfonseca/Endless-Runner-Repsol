@@ -5,6 +5,16 @@ using System;
 
 public class CarHandler : MonoBehaviour
 {
+    [Header("Gasoline")]
+    [SerializeField] float gasolineMax = 100f;
+    [SerializeField] float currentGasoline = 100f;
+    [SerializeField] float consumePerSecond = 5f;
+
+    [SerializeField] AudioSource noFuelAS;
+    public float CurrentGasoline => currentGasoline;
+    public float GasolineMax => gasolineMax;
+
+    public event Action<float> OnGasolineChanged;
     [SerializeField] Rigidbody rb;
 
     [SerializeField] Transform gameModel;
@@ -36,6 +46,7 @@ public class CarHandler : MonoBehaviour
 
     bool isExploded = false;
     bool isPlayer = false;
+    bool isOutOfFuel = false;
 
     Vector2 input = Vector2.zero;
 
@@ -60,6 +71,7 @@ public class CarHandler : MonoBehaviour
         carStartPositionZ = transform.position.z;
     }
 
+
     void Update()
     {
         if (isExploded)
@@ -74,6 +86,36 @@ public class CarHandler : MonoBehaviour
 
         //Update distance traveled
         distanceTraveled = transform.position.z - carStartPositionZ;
+
+        // Notify the DifficultyManager to scale difficulty based on distance
+        if (isPlayer && DifficultyManager.Instance != null)
+        {
+            DifficultyManager.Instance.UpdateDifficulty(distanceTraveled);
+            maxForwardVelocity = DifficultyManager.Instance.PlayerMaxSpeed;
+        }
+
+        // Gasuline consumption
+        if (isPlayer && currentGasoline > 0)
+        {
+            currentGasoline -= consumePerSecond * Time.deltaTime;
+            currentGasoline = Mathf.Clamp(currentGasoline, 0, gasolineMax);
+            OnGasolineChanged?.Invoke(currentGasoline);
+            if (currentGasoline <= 0 && !isOutOfFuel)
+            {
+                // out of gasoline, trigger game over
+                isOutOfFuel = true;
+                input = Vector2.zero;
+                carEngineAS.Stop();
+                noFuelAS.Play();
+                OnPlayerCrashed?.Invoke(this);
+            }
+        }
+    }
+
+    public void AddGasoline(float amount)
+    {
+        currentGasoline = Mathf.Clamp(currentGasoline + amount, 0, gasolineMax);
+        OnGasolineChanged?.Invoke(currentGasoline);
     }
 
 
@@ -85,6 +127,14 @@ public class CarHandler : MonoBehaviour
             rb.linearDamping = Mathf.Clamp(rb.linearDamping, 1.5f, 10);
 
             rb.MovePosition(Vector3.Lerp(transform.position, new Vector3(0, 0, transform.position.z), Time.deltaTime * 0.5f));
+            return;
+        }
+
+        // slowly stop the car when out of gas
+        if (isPlayer && currentGasoline <= 0)
+        {
+            rb.linearDamping = Mathf.Lerp(rb.linearDamping, 8f, Time.fixedDeltaTime * 2f);
+            steer();
             return;
         }
 
