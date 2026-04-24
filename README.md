@@ -1,6 +1,6 @@
 # 🚗 Endless Runner Repsol
 
-Jogo desenvolvido no âmbito da unidade curricular de **Tecnologias e Multimédia**, do curso de **Engenharia Informática** — **IPVC / ESTG**.
+Jogo desenvolvido no âmbito da unidade curricular de **Tecnologias e Multimédia**, do curso de **Engenharia Informática** - **IPVC / ESTG**.
 
 ---
 
@@ -36,8 +36,11 @@ Este projeto foi desenvolvido com a versão **Unity 6000.3.9f1**.
 - **Efeitos sonoros** - sons de motor, derrapagem e outros eventos de jogo (formatos MP3 e WAV).
 - **Interface** - HUD que exibe em tempo real a distância acumulada pelo jogador e combustível restante.
 - **Sistema de combustível** - o carro consome combustível ao longo do tempo; o jogador pode recolher galões de gasolina espalhados pela pista para reabastecer.
+- **Retrovisor** - câmara secundária ativada com a tecla `E` que mostra a vista traseira do veículo.
+- **Câmara em primeira pessoa** - tecla `V` alterna entre perspetiva em terceira pessoa e primeira pessoa.
 - **Seletor de carro** - menu principal com seleção de veículo antes de iniciar a partida.
-- **Ecrã de Game Over** - UI dedicado apresentado após a colisão, com informação da distância percorrida e opção de reinício.
+- **Tutorial inicial** - ecrã apresentado no início do nível com as teclas de controlo e respetivas ações.
+- **Ecrã de Game Over** - UI dedicado apresentado após a colisão, com informação da distância percorrida, opção de reinício e de voltar para o Main Menu.
 
 ---
 
@@ -55,6 +58,8 @@ Percorrer a maior distância possível sem colidir com obstáculos ou veículos 
 | `S` | Travar |
 | `A` | Virar à esquerda |
 | `D` | Virar à direita |
+| `E` | Ativar/desativar retrovisor |
+| `V` | Alternar câmara (1ª / 3ª pessoa) |
 | `R` | Reiniciar o jogo |
 
 ### Regras
@@ -77,13 +82,13 @@ Percorrer a maior distância possível sem colidir com obstáculos ou veículos 
 ### Passos
 
 1. Clonar o repositório:
-   ```bash
+```bash
    git clone https://github.com/m1guelfonseca/Endless-Runner-Repsol.git
-   ```
+```
 2. Abrir o **Unity Hub**.
-3. Clicar em **Add** → **Add project from disk** e selecionar a pasta clonada.
+3. Clicar em **Add** -> **Add project from disk** e selecionar a pasta clonada.
 4. Garantir que a versão do editor selecionada é a **6000.3.9f1**.
-5. Abrir o projeto e, no painel **Project**, navegar até `Assets/Scenes` e abrir a cena `Main menu` .
+5. Abrir o projeto e, no painel **Project**, navegar até `Assets/Scenes` e abrir a cena `Main menu`.
 6. Clicar em **Play** para correr o jogo no editor.
 
 ---
@@ -107,7 +112,7 @@ Percorrer a maior distância possível sem colidir com obstáculos ou veículos 
 
 ## ⚠️ Observações e Limitações Conhecidas
 
-Não foram identificadas lacunas relevantes.
+O spawn de carros pode às vezes ficar um pouco caótico, mas acaba por tornar o jogo mais desafiante. De resto, não foram identificadas lacunas relevantes.
 
 ---
 
@@ -139,4 +144,4 @@ Os commits são escritos em **inglês**.
 
 ## 📄 Contexto Académico
 
-Projeto desenvolvido para fins académicos no âmbito da unidade curricular de **Tecnologias e Multimédia**, do curso de **Engenharia Informática** — **IPVC / ESTG**.
+Projeto desenvolvido para fins académicos no âmbito da unidade curricular de **Tecnologias e Multimédia**, do curso de **Engenharia Informática** - **IPVC / ESTG**.
